@@ -22,6 +22,12 @@
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">
+
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <x-nav-link :href=" LaravelLocalization::getLocalizedURL($localeCode, null, [], true) " :active=" strtoupper(app()->getLocale()) == $localeCode">
+                                {{ $properties['native'] }}
+                            </x-nav-link>
+                        @endforeach
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
@@ -73,6 +79,13 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
+                    {{-- @dd(app()->getLocale()) --}}
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <x-nav-link :href=" LaravelLocalization::getLocalizedURL($localeCode, null, [], true) "
+                        :active=" app()->getLocale() == $localeCode">
+                            {{ $properties['native'] }}
+                        </x-nav-link>
+                    @endforeach
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())

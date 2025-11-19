@@ -168,7 +168,7 @@ return [
             'seeder' => ['path' => 'database/seeders', 'generate' => true],
 
             // lang/
-            'lang' => ['path' => 'lang', 'generate' => false],
+            'lang' => ['path' => 'lang', 'generate' => true],
 
             // resource/
             'assets' => ['path' => 'resources/assets', 'generate' => true],
