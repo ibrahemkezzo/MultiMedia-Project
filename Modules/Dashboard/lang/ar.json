@@ -1,3 +1,7 @@
 {
-    "Hello World":"اهلا بك"
+    "Dashboard" : "لوحة التحكم",
+    "Admin Panel" : "لوحة تحكم الخاصة بالادمن",
+    "Search.." : "ابحث عن شيء",
+    "footer.copyright": "جميع الحقوق محفوظة © :year إبراهيم قزح.",
+    "footer.handcrafted": "مصنوع يدويًا وبكل حب"
 }

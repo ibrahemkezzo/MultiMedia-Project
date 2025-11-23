@@ -1,5 +1,11 @@
-<x-dashboard::layouts.master>
-    <h1>{{__("Hello World")}}</h1>
+@extends('dashboard::layouts.app')
 
-    <p>Module: {!! config('dashboard.name') !!}</p>
-</x-dashboard::layouts.master>
+@section('breadcrumbs')
+    <x-dashboard::dashboardbreadcrumb :breadcrumbs="[['label' => __('Dashboard'), 'url' => route('dashboard.index')]]" :pageName="__('Dashboard')" />
+@endsection
+@section('content')
+
+    @push('styles')
+        <link rel="stylesheet" type="text/css" href="{{ asset('modules/dashboard/css/vendors/dropzone.css') }}">
+    @endpush
+@endsection
