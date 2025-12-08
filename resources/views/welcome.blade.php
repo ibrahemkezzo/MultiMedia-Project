@@ -37,7 +37,6 @@
                                             {{ $properties['native'] }}
                                         </a>
                                     </li>
-                                    @dump($localeCode)
                                 @endforeach
                             </ul>
                         </li>

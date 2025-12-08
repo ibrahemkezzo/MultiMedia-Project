@@ -65,13 +65,13 @@
     أمثلة على الاستخدام:
 
     1. تشيك بوكس عادي:
-       <x-forms.checkbox-group
+       <x-dashboard::form.checkbox-group
            name="hobbies"
            label="الهوايات"
            :options="['read' => 'القراءة', 'sport' => 'الرياضة', 'travel' => 'السفر']" />
 
     2. متعدد الاختيار في سطر واحد:
-       <x-forms.checkbox-group
+       <x-dashboard::form.checkbox-group
            name="notifications"
            label="إشعارات"
            :options="$notificationTypes"
@@ -79,7 +79,7 @@
            :checked="['email', 'sms']" />
 
     3. مع Livewire وتحديث فوري:
-       <x-forms.checkbox-group
+       <x-dashboard::form.checkbox-group
            name="permissions[]"
            label="الصلاحيات"
            :options="$allPermissions"
@@ -87,14 +87,14 @@
            wire:model.live="selectedPermissions" />
 
     4. تشيك بوكس واحد فقط (مثل الموافقة):
-       <x-forms.checkbox-group
+       <x-dashboard::form.checkbox-group
            name="terms"
            :options="['1' => 'أوافق على الشروط والأحكام']"
            required
            help-text="يجب الموافقة للمتابعة" />
 
     5. كلاسات مخصصة (مثل switch أو كبير):
-       <x-forms.checkbox-group
+       <x-dashboard::form.checkbox-group
            name="features"
            :options="$features"
            item-class="form-check form-switch"

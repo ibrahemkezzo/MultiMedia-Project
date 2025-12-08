@@ -1,7 +1,10 @@
 {
-    "Dashboard" : "Dashboard",
-    "Admin Panel" : "Admin Panel",
-    "Search.." : "Search..",
+    "Dashboard": "Dashboard",
+    "Admin Panel": "Admin Panel",
+    "Search..": "Search..",
     "footer.copyright": "Copyright © :year ibrahem_kezzo. All rights reserved.",
-    "footer.handcrafted": "Hand-crafted & made with love"
+    "footer.handcrafted": "Hand-crafted & made with love",
+    "User List": "User List",
+    "Users": "Users",
+    "Settings" : "Settings"
 }

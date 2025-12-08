@@ -1,4 +1,5 @@
 {
     "Dashboard": true,
-    "Layouts": true
+    "Layouts": true,
+    "Auth": true
 }

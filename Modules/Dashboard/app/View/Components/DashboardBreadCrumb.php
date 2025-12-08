@@ -11,14 +11,17 @@ class DashboardBreadCrumb extends Component
     public $breadcrumbs;
 
     public $pageName;
+    public $pageDsecript;
     /**
      * Create a new component instance.
      */
-    public function __construct(array $breadcrumbs = [], string $pageName = '')
+    public function __construct(array $breadcrumbs = [], string $pageName = '' ,string $pageDsecript = 'Admin Panel')
     {
         $this->breadcrumbs = $breadcrumbs;
 
         $this->pageName = $pageName;
+
+        $this->pageDsecript = $pageDsecript;
 
     }
 

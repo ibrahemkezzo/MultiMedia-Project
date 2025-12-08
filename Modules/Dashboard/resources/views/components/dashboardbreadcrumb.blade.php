@@ -6,7 +6,7 @@
                 <div class="page-header-left">
                     <h3>{{ $pageName }}
                         {{-- هنا يجب تمرير اس الصفحة --}}
-                        <small>{{ __('Admin Panel') }}</small>
+                        <small>{{ $pageDsecript }}</small>
                     </h3>
                 </div>
             </div>

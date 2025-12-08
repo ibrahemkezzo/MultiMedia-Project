@@ -6,13 +6,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
+    use HasRoles;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
@@ -29,6 +33,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path',
     ];
 
     /**
@@ -50,6 +55,8 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'last_seen',
+        'is_online'
     ];
 
     /**
@@ -64,4 +71,46 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    /**
+     * جلب آخر نشاط للمستخدم من جدول sessions
+     */
+    public function getLastSeenAttribute(): ?Carbon
+    {
+        // if (!$this->id) {
+            return null;
+        // }
+
+        // $session = DB::table('sessions')
+        //     ->where('user_id', $this->id)
+        //     ->orderBy('last_activity', 'desc')
+        //     ->first();
+
+        // return $session ? Carbon::createFromTimestamp($session->last_activity) : null;
+    }
+    /**
+     * هل المستخدم متصل الآن؟ (خلال آخر 5 دقائق)
+     */
+    public function getIsOnlineAttribute(): bool
+    {
+        return false;
+    }
+
+    /**
+     * آخر IP من الجلسة الأخيرة
+     */
+    // public function getLastSeenIpAttribute(): ?string
+    // {
+    //     if (!$this->id) {
+    //         return null;
+    //     }
+
+    //     $session = DB::table('sessions')
+    //         ->where('user_id', $this->id)
+    //         ->orderBy('last_activity', 'desc')
+    //         ->first();
+
+    //     return $session->ip_address ?? null;
+    // }
 }

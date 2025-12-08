@@ -1,60 +1,80 @@
+{{-- resources/views/components/dashboard/form/input.blade.php --}}
+
 @props([
-    'name'              => null,                  // اسم الحقل (required)
-    'type'              => 'text',                // text, email, password, number, date, etc.
-    'value'             => '',                    // القيمة الافتراضية
-    'label'             => null,                  // نص الـ label (إذا false أو null ما يظهر)
-    'labelClass'        => 'form-label fw-semibold', // كلاسات الـ label
-    'wrapperClass'      => 'mb-3',                // كلاسات الـ div اللي يحيط بالحقل
-    'inputClass'        => 'form-control',        // كلاسات الـ input الأساسية
-    'placeholder'       => null,                  // placeholder (اختياري)
-    'iconLeft'          => null,                  // أيقونة يسار (مثل: fa fa-user)
-    'iconRight'         => null,                  // أيقونة يمين
-    'disabled'          => false,                 // disabled
-    'readonly'          => false,                 // readonly
-    'required'          => false,                 // إضافة required attribute
-    'autocomplete'     => null,                  // autocomplete="off" أو أي قيمة
-    'helpText'          => null,                  // نص مساعد تحت الحقل (مثل: "يجب أن يكون 8 أحرف")
-    'helpTextClass'     => 'text-muted small',    // كلاسات نص المساعدة
+    'name'              => null,
+    'type'              => 'text',
+    'value'             => '',
+    'label'             => null,
+    'labelClass'        => '',
+    'wrapperClass'      => '',
+    'inputClass'        => 'form-control',
+    'devClass'          => '',
+    'placeholder'       => null,
+    'iconLeft'          => null,
+    'iconRight'         => null,
+    'disabled'          => false,
+    'readonly'          => false,
+    'required'          => false,
+    'autocomplete'      => null,
+    'helpText'          => null,
+    'helpTextClass'     => '',
+    'validationBag'     => null, // اختياري: تحديد bag معين (مثل: 'updatePassword')
 ])
 
 @php
-    // دمج الكلاسات الإضافية من $attributes
+    // جلب القيمة القديمة (من أي bag)
+    $oldValue = old($name, $value);
+
+    // التحقق من وجود خطأ في الـ default bag أو في bag مخصص
+    $hasError = $errors->has($name);
+    $errorMessage = $errors->first($name);
+
+    if ($validationBag) {
+        $bag = $errors->getBag($validationBag);
+        if ($bag->has($name)) {
+            $hasError = true;
+            $errorMessage = $bag->first($name);
+        }
+    } elseif ($errors->any()) {
+        foreach ($errors->getBags() as $bag) {
+            if ($bag->has($name)) {
+                $hasError = true;
+                $errorMessage = $bag->first($name);
+                break;
+            }
+        }
+    }
+
+    // دمج الكلاسات
     $inputClasses = $attributes->class([
         $inputClass,
-        'is-invalid' => $errors->has($name),
-        'pe-5'       => $iconRight,   // مساحة للأيقونة اليمنى
-        'ps-5'       => $iconLeft,    // مساحة للأيقونة اليسرى
+        'is-invalid' => $hasError,
+        'pe-5'       => $iconRight,
+        'ps-5'       => $iconLeft,
     ]);
-
-    // جلب القيمة القديمة أو الافتراضية
-    $oldValue = old($name, $value);
 @endphp
 
 <div class="{{ $wrapperClass }}">
-    {{-- Label --}}
     @if($label)
         <label for="{{ $name }}" class="{{ $labelClass }}">
-            {{ $label }}
+            {{ __($label) }}
             @if($required)<span class="text-danger">*</span>@endif
         </label>
     @endif
 
-    {{-- Input Wrapper للأيقونات --}}
-    <div class="position-relative">
-        {{-- Icon Left --}}
+    <div class="{{ $devClass }}">
         @if($iconLeft)
-            <div class="position-absolute top-50 start-0 translate-middle-y ps-3 z-3">
+            <div class="position-absolute top-50 start-0 translate-middle-y ps-3 z-3 pointer-events-none">
                 <i class="{{ $iconLeft }}"></i>
             </div>
         @endif
 
-        {{-- Input --}}
         <input
             type="{{ $type }}"
             name="{{ $name }}"
             id="{{ $name }}"
             value="{{ $oldValue }}"
-            placeholder="{{ $placeholder ?? $label }}"
+            placeholder="{{ $placeholder }}"
             {{ $attributes->except(['class']) }}
             {{ $inputClasses }}
             @if($disabled) disabled @endif
@@ -63,42 +83,34 @@
             @if($autocomplete) autocomplete="{{ $autocomplete }}" @endif
         >
 
-        {{-- Icon Right --}}
         @if($iconRight)
-            <div class="position-absolute top-50 end-0 translate-middle-y pe-3 z-3">
+            <div class="position-absolute top-50 end-0 translate-middle-y pe-3 z-3 pointer-events-none">
                 <i class="{{ $iconRight }}"></i>
             </div>
         @endif
     </div>
 
-    {{-- Help Text --}}
     @if($helpText)
         <div class="{{ $helpTextClass }}">{{ $helpText }}</div>
     @endif
 
-    {{-- Validation Error --}}
-    @error($name)
+    @if($hasError && $errorMessage)
         <div class="invalid-feedback d-block">
-            {{ $message }}
+            {{ $errorMessage }}
         </div>
-    @enderror
+    @endif
 </div>
-
-{{-- =====================================================================
-     شرح طريقة الاستخدام (لا تحتاج تكتب أي كود إضافي أبدًا)
-     ===================================================================== --}}
-
 {{--
     أمثلة على الاستخدام:
 
     1. input عادي بسيط:
-       <x-forms.input name="name" label="الاسم الكامل" />
+       <x-dashboard::form.input name="name" label="الاسم الكامل" />
 
     2. مع placeholder و required:
-       <x-forms.input name="email" type="email" label="البريد الإلكتروني" required />
+       <x-dashboard::form.input name="email" type="email" label="البريد الإلكتروني" required />
 
     3. مع أيقونة يسار وكلاسات مخصصة:
-       <x-forms.input
+       <x-dashboard::form.input
            name="username"
            label="اسم المستخدم"
            icon-left="fa fa-user"
@@ -106,7 +118,7 @@
            placeholder="أدخل اسم المستخدم" />
 
     4. مع أيقونة يمين + نص مساعدة:
-       <x-forms.input
+       <x-dashboard::form.input
            name="password"
            type="password"
            label="كلمة المرور"
@@ -115,7 +127,7 @@
            required />
 
     5. تمرير أي attribute إضافي (مثل data-* أو wire:model):
-       <x-forms.input
+       <x-dashboard::form.input
            name="phone"
            label="رقم الجوال"
            icon-left="fa fa-phone"
@@ -123,7 +135,30 @@
            data-mask="0000-000-000" />
 
     6. بدون label ومع كلاسات مخصصة للـ wrapper:
-       <x-forms.input name="search" placeholder="ابحث..." wrapper-class="mb-0" input-class="border-0 shadow-none" />
+       <x-dashboard::form.input name="search" placeholder="ابحث..." wrapper-class="mb-0" input-class="border-0 shadow-none" />
 
     كل شيء ممكن من خلال الـ props فقط! لا حاجة لكتابة HTML أو CSS خارجي أبدًا.
+--}}
+{{--
+<!-- 1. عادي (بدون bag) -->
+<x-dashboard::form.input name="title" label="العنوان" />
+
+<!-- 2. مع Fortify Profile -->
+<x-dashboard::form.input
+    name="name"
+    label="الاسم"
+    validation-bag="updateProfileInformation"
+/>
+
+<!-- 3. مع Fortify Password -->
+<x-dashboard::form.input
+    name="password"
+    type="password"
+    label="كلمة المرور"
+    validation-bag="updatePassword"
+/>
+
+<!-- 4. بدون تحديد bag (الأفضل دائمًا!) -->
+<x-dashboard::form.input name="email" label="البريد" />
+<!-- يعمل مع أي bag تلقائيًا -->
 --}}
