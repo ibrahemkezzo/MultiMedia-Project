@@ -24,7 +24,7 @@
 <div class="mb-4">
     @if($label)
         <label class="form-label fw-bold">
-            {{ $label }}
+            {{ __($label) }}
             @if($attributes->has('required') && $attributes->get('required'))
                 <span class="text-danger">*</span>
             @endif

@@ -1,5 +1,8 @@
 {
     "Dashboard": true,
     "Layouts": true,
-    "Auth": true
+    "Auth": true,
+    "Category": true,
+    "Core": true,
+    "Store": true
 }

@@ -1,0 +1,32 @@
+{
+    "Categories": "الأقسام",
+    "Category" : "قسم",
+    "Manage Categories": "إدارة الأقسام",
+    "Add Category": "إضافة قسم",
+    "Edit Category": "تعديل القسم",
+    "Total Categories": "عدد الأقسام الكلي",
+    "Search category...": "ابحث عن قسم...",
+    "All": "الكل",
+    "Image": "الصورة",
+    "Name": "الاسم",
+    "Parent": "القسم الأب",
+    "Status": "الحالة",
+    "Sort Order": "ترتيب العرض",
+    "Option": "الخيارات",
+    "Active": "نشط",
+    "Inactive": "غير نشط",
+    "No categories found": "لا يوجد أقسام",
+    "Create Category": "إنشاء قسم جديد",
+    "Update Category": "تحديث القسم",
+    "Description": "الوصف",
+    "Icon": "الأيقونة",
+    "Parent Category": "القسم الأب",
+    "Select Parent": "اختر القسم الأب",
+    "Create": "إنشاء",
+    "Update": "تحديث",
+    "Cancel": "إلغاء",
+    "Add a new category to the system" : "إضافة قسم جديد للنظام"
+
+}
+
+

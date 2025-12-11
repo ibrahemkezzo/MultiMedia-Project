@@ -40,7 +40,7 @@
     {{-- Label --}}
     @if($label)
         <label for="{{ $name }}" class="{{ $labelClass }}">
-            {{ $label }}
+            {{ __($label) }}
             @if($required)<span class="text-danger">*</span>@endif
         </label>
     @endif
@@ -57,7 +57,7 @@
             name="{{ $multiple ? $name.'[]' : $name }}"
             id="{{ $name }}"
             {{ $attributes->except(['class']) }}
-            class="{{ $selectClasses }}"
+            {{ $selectClasses }}
             @if($multiple) multiple @endif
             @if($disabled) disabled @endif
             @if($required) required @endif

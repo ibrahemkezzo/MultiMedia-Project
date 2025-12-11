@@ -44,9 +44,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('modules/dashboard/css/ck-editor.css') }}">
 
 
-    <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
+        <style>
+        .card .card-header h5 {
+            color: red !important;
+        }
+    </style>
     @stack('styles')
-    @livewireStyles
+    <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
 </head>
 
 <body>
@@ -197,7 +201,6 @@
         </script>
     @stack('scripts')
 
-    @livewireScripts
 </body>
 
 </html>

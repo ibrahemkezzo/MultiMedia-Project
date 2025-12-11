@@ -8,6 +8,6 @@ Route::prefix(LaravelLocalization::setLocale())
     ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->group(function () {
         Route::middleware(['auth', 'verified'])->group(function () {
-            Route::resource('dashboards', DashboardController::class)->names('dashboard');
+            Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
         });
     });

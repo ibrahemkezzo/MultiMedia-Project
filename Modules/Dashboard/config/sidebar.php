@@ -8,7 +8,7 @@ return [
             'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
             'active' => true,
         ],
-        //Products
+        // Products
         // [
         //     'label' => 'Products',
         //     'url' => 'javascript:void(0)',
@@ -42,7 +42,7 @@ return [
         //         ['label' => 'Product Review', 'url' => 'product-review.html'],
         //     ],
         // ],
-        //Orders
+        // Orders
         // [
         //     'label' => 'Orders',
         //     'url' => 'javascript:void(0)',
@@ -53,7 +53,7 @@ return [
         //         ['label' => 'Order Details', 'url' => 'order-detail.html'],
         //     ],
         // ],
-        //Sales
+        // Sales
         // [
         //     'label' => 'Sales',
         //     'url' => 'javascript:void(0)',
@@ -63,7 +63,7 @@ return [
         //         ['label' => 'Transactions', 'url' => 'transactions.html'],
         //     ],
         // ],
-        //Coupons
+        // Coupons
         // [
         //     'label' => 'Coupons',
         //     'url' => 'javascript:void(0)',
@@ -73,7 +73,7 @@ return [
         //         ['label' => 'Create Coupons', 'url' => 'coupon-create.html'],
         //     ],
         // ],
-        //Pages
+        // Pages
         // [
         //     'label' => 'Pages',
         //     'url' => 'javascript:void(0)',
@@ -83,7 +83,7 @@ return [
         //         ['label' => 'Create Page', 'url' => 'page-create.html'],
         //     ],
         // ],
-        //Menus
+        // Menus
         // [
         //     'label' => 'Menus',
         //     'url' => 'javascript:void(0)',
@@ -93,7 +93,30 @@ return [
         //         ['label' => 'Create Menu', 'url' => 'create-menu.html'],
         //     ],
         // ],
-        //Users
+           // Category
+        [
+            'label' => 'Categories',
+            'url' => 'javascript:void(0)',
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3" y2="6"></line>
+                <line x1="3" y1="12" x2="3" y2="12"></line>
+                <line x1="3" y1="18" x2="3" y2="18"></line>
+                <circle cx="4" cy="6" r="1.5" fill="currentColor" stroke="none"></circle>
+                <circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"></circle>
+                <circle cx="4" cy="18" r="1.5" fill="currentColor" stroke="none"></circle>
+            </svg>',
+            'submenu' => [
+                ['label' => 'Categories List', 'url' => 'dashboard.categories.index'],
+                ['label' => 'Create Category', 'url' => 'dashboard.categories.create'],
+                // ['label' => 'dashboard.user_rewards', 'url' => 'dashboard.user-rewards.index'],
+                // ['label' => 'Roles', 'url' => 'dashboard.roles.index'],
+                // ['label' => 'Permissions', 'url' => 'dashboard.permissions.index'],
+            ],
+        ],
+        // Users
         [
             'label' => 'Users',
             'url' => 'javascript:void(0)',
@@ -106,7 +129,8 @@ return [
                 ['label' => 'Permissions', 'url' => 'dashboard.permissions.index'],
             ],
         ],
-        //Vendors
+
+        // Vendors
         // [
         //     'label' => 'Vendors',
         //     'url' => 'javascript:void(0)',
@@ -116,7 +140,7 @@ return [
         //         ['label' => 'Create Vendor', 'url' => 'create-vendors.html'],
         //     ],
         // ],
-        //Localization
+        // Localization
         // [
         //     'label' => 'Localization',
         //     'url' => 'javascript:void(0)',
@@ -127,13 +151,13 @@ return [
         //         ['label' => 'Taxes', 'url' => 'taxes.html'],
         //     ],
         // ],
-        //Support Ticket
+        // Support Ticket
         // [
         //     'label' => 'Support Ticket',
         //     'url' => 'support-ticket.html',
         //     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
         // ],
-        //Cities
+        // Cities
         // [
         //     'label' => 'dashboard.cities',
         //     'url' => 'dashboard.cities.index',
@@ -144,13 +168,13 @@ return [
         //     <circle cx="12" cy="9" r="2"/>
         //     </svg>',
         // ],
-        //sub_service
+        // sub_service
         // [
         //     'label' => 'dashboard.sub_services',
         //     'url' => 'dashboard.sub_services.index',
         //     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>',
         // ],
-         //management
+        // management
         //  [
         //     'label' => 'dashboard.management',
         //     'url' => 'javascript:void(0)',
@@ -164,14 +188,14 @@ return [
         //         // ['label' => 'dashboard.appointments', 'url' => 'dashboard.appointments.index'],
         //     ],
         // ],
-        //Reports
+        // Reports
         // [
         //     'label' => 'dashboard.reports',
         //     'url' => 'dashboard.reports',
         //     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>',
         // ],
 
-        //Media
+        // Media
         // [
         //     'label' => 'dashboard.file_manager',
         //     'url' => 'javascript:void(0)',
@@ -182,29 +206,29 @@ return [
         //         ['label' => 'dashboard.media', 'url' => 'dashboard.file-manager.media'],
         //     ],
         // ],
-        //Settings
+        // Settings
         [
             'label' => 'Settings',
             'url' => 'javascript:void(0)',
             'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>',
             'submenu' => [
                 ['label' => 'Profile', 'url' => 'dashboard.profile.show'],
-                // ['label' => 'dashboard.website_settings', 'url' => 'dashboard.settings.index'],
+                ['label' => 'Website Settings', 'url' => 'dashboard.settings.index'],
             ],
         ],
-        //Invoice
+        // Invoice
         // [
         //     'label' => 'Invoice',
         //     'url' => 'invoice.html',
         //     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-archive"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>',
         // ],
-        //Forgot Password
+        // Forgot Password
         // [
         //     'label' => 'Forgot Password',
         //     'url' => 'forgot-password.html',
         //     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>',
         // ],
-        //Login
+        // Login
         // [
         //     'label' => 'Login',
         //     'url' => 'login.html',

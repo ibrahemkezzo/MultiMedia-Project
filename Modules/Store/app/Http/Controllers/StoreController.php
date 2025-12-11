@@ -1,18 +1,18 @@
 <?php
 
-namespace Modules\Auth\Http\Controllers;
+namespace Modules\Store\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('auth::index');
+        return view('store::index');
     }
 
     /**
@@ -20,7 +20,7 @@ class AuthController extends Controller
      */
     public function create()
     {
-        return view('auth::create');
+        return view('store::create');
     }
 
     /**
@@ -33,7 +33,7 @@ class AuthController extends Controller
      */
     public function show($id)
     {
-        return view('auth::show');
+        return view('store::show');
     }
 
     /**
@@ -41,7 +41,7 @@ class AuthController extends Controller
      */
     public function edit($id)
     {
-        return view('auth::edit');
+        return view('store::edit');
     }
 
     /**

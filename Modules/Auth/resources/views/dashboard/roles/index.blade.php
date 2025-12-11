@@ -49,7 +49,7 @@
 
 
                         <x-dashboard::form.action-link route="dashboard.roles.create" icon="fa fa-plus"
-                            title="Add New Permission" label="Add New Permission" class="btn btn-primary mt-md-0 mt-2" />
+                            title="Add New Role" label="Add New Role" class="btn btn-primary mt-md-0 mt-2" />
                     </div>
 
                     <!-- Table -->

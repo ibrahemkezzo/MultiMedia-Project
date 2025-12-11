@@ -1,0 +1,60 @@
+{
+
+
+    "Website Settings": "إعدادات الموقع",
+    "Manage website general configuration": "إدارة الإعدادات العامة للموقع",
+
+    "General": "عام",
+    "Appearance": "المظهر",
+    "SEO": "تهيئة محركات البحث",
+    "Email Settings": "إعدادات البريد",
+    "Payments": "مدفوعات",
+
+    "General Settings": "الإعدادات العامة",
+    "Appearance Settings": "إعدادات المظهر",
+    "SEO Settings": "إعدادات SEO",
+    "Mail Settings": "إعدادات البريد",
+    "Payment Settings": "إعدادات الدفع",
+
+    "Site Name": "اسم الموقع",
+    "Site Email": "البريد الإلكتروني للموقع",
+    "Phone Number": "رقم الهاتف",
+
+    "Default Currency": "العملة الافتراضية",
+    "Timezone": "المنطقة الزمنية",
+    "Locale": "اللغة",
+
+    "Items per page": "عدد العناصر في كل صفحة",
+    "Commission rate (%)": "نسبة العمولة (%)",
+    "Commission rate": "نسبة العمولة",
+
+    "Maintenance Mode": "وضع الصيانة",
+
+    "Social Media Links": "روابط التواصل الاجتماعي",
+    "Facebook URL": "رابط فيسبوك",
+    "Instagram URL": "رابط إنستغرام",
+    "Twitter URL": "رابط تويتر",
+    "TikTok URL": "رابط تيك توك",
+    "YouTube URL": "رابط يوتيوب",
+
+    "Site Description": "وصف الموقع",
+    "Footer Text": "نص الفوتر",
+
+    "Current Logo": "الشعار الحالي",
+    "Current Favicon": "الأيقونة الحالية",
+    "Store Banner": "بنر المتجر",
+
+    "Logo": "الشعار",
+    "Favicon": "الأيقونة",
+    "Default Store Banner": "بنر المتجر الافتراضي",
+
+    "SMTP Host": "مستضيف SMTP",
+    "SMTP Port": "منفذ SMTP",
+    "SMTP Username": "اسم مستخدم SMTP",
+    "SMTP Password": "كلمة مرور SMTP",
+
+    "Stripe Public Key": "مفتاح Stripe العام",
+    "Stripe Secret Key": "مفتاح Stripe السري",
+
+    "Settings Website updated successfully.": "تم تحديث اعدادات الموقع بنجاح"
+}
