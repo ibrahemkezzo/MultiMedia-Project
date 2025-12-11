@@ -5,7 +5,8 @@
     'accept'        => null,           // image/* أو .pdf,.docx
     'size'          => 'lg',           // sm, md, lg, xl
     'helpText'      => 'اسحب الملفات هنا أو اضغط للرفع',
-    'existingFiles' => [],             // array من URLs أو paths للتعديل
+    'existingFiles' => [],          // array من URLs أو paths للتعديل
+    'wrapperClass'  => '',
 ])
 
 @php
@@ -21,7 +22,7 @@
     };
 @endphp
 
-<div class="mb-4">
+<div class="{{ $wrapperClass }}">
     @if($label)
         <label class="form-label fw-bold">
             {{ __($label) }}

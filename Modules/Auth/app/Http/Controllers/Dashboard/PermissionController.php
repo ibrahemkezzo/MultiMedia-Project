@@ -38,7 +38,7 @@ class PermissionController extends Controller
     {
         $this->service->create($request->validated());
 
-        return redirect()->route('dashboard.permissions.index')->with('message', [
+        return redirect()->route('dashboard.permissions.create')->with('message', [
             'type' => 'success',
             'content' => __('Permission created successfully.'),
             // 'img'     => asset('images/congrats.gif'),

@@ -13,7 +13,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-xl-10">
             <div class="card tab2-card">
                 <div class="card-body">
