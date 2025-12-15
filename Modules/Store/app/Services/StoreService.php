@@ -10,37 +10,51 @@ use Modules\Store\Models\Store;
 
 class StoreService
 {
-    public function getPaginated(Request $request)
+  public function getPaginated(Request $request, bool $forWebsite = false)
     {
-        $query = Store::with(['user', 'category']);
+        $query = Store::with(['user', 'category'])
+                      ->withCount('products')
+                      ->when(!$forWebsite, fn($q) => $q); // لو dashboard، ما نضيف active() إلا لو بدك
 
+        // بحث عام
         if ($request->filled('search')) {
             $search = $request->search;
             $query->whereHas('user', fn ($q) => $q->where('name', 'like', "%$search%"))
-                ->orWhereHas('category', fn ($q) => $q->where('name', 'like', "%$search%"));
+                  ->orWhereHas('category', fn ($q) => $q->where('name', 'like', "%$search%"));
         }
 
-        // فلترة بالمدينة
+        // فلترة بالـ category (المتاجر اللي عندها منتجات من هالقسم)
+        if ($request->filled('category')) {
+            $categoryId = $request->category;
+            $query->where('category_id',$categoryId);
+        }
+
+        // فلترة بالـ subcategory
+        if ($request->filled('subcategory')) {
+            $subcategoryIds = (array) $request->subcategory;
+            $query->whereHas('products', fn($q) => $q->whereIn('category_id', $subcategoryIds)->active());
+        }
+
+        // فلترة بالمدينة من settings
         if ($request->filled('city')) {
             $city = $request->city;
-            $query->whereHas('settings', function ($q) use ($city) {
-                $q->where('key', 'store_city')
-                    ->where('value', 'like', "%$city%");
-            });
+            $query->whereHas('settings', fn($q) => $q->where('key', 'store_city')->where('value', 'like', "%$city%"));
         }
 
-        // فلترة بالبلد
+        // فلترة بالبلد من settings
         if ($request->filled('country')) {
             $country = $request->country;
-            $query->whereHas('settings', function ($q) use ($country) {
-                $q->where('key', 'store_country')
-                    ->where('value', 'like', "%$country%");
-            });
+            $query->whereHas('settings', fn($q) => $q->where('key', 'store_country')->where('value', 'like', "%$country%"));
+        }
+
+        // إذا كان للـ Website، نضيف فلتر المتاجر النشطة فقط
+        if ($forWebsite) {
+            $query->active();
         }
 
         return $query->orderBy('created_at', 'desc')
-            ->paginate($request->per_page ?? 25)
-            ->withQueryString();
+                     ->paginate($request->per_page ?? ($forWebsite ? 12 : 25))
+                     ->withQueryString();
     }
 
     public function create(array $data): Store
@@ -62,6 +76,12 @@ class StoreService
 
                 $data['logo_store'] = upload()->upload($data['logo_store'], 'stores');
                 setting_set('logo_store', $data['logo_store'] ?? setting_get('default_store_banner'), $store->id);
+
+            }
+            if (isset($data['cover_store']) && $data['cover_store'] instanceof UploadedFile) {
+
+                $data['cover_store'] = upload()->upload($data['cover_store'], 'stores');
+                setting_set('cover_store', $data['cover_store'] ?? setting_get('default_store_banner'), $store->id);
 
             }
 

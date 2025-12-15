@@ -14,7 +14,7 @@ use Modules\Auth\Http\Controllers\Dashboard\UserController;
 
 Route::
 prefix(LaravelLocalization::setLocale().'/dashboard')
-->middleware(['auth','localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+->middleware(['auth','localeSessionRedirect', 'localizationRedirect', 'localeViewPath'  ])
 ->as('dashboard.')
 ->group(function () {
     Route::resource('users', UserController::class)->names('users');

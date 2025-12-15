@@ -29,6 +29,7 @@ public function rules(): array
             'total_sales' => ['nullable', 'decimal:0,2'],
             'rating'      => ['nullable', 'integer', 'min:0', 'max:5'],
             'logo_store'  => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg', 'max:2048'],
+            'cover_store'  => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg', 'max:2048'],
         ];
     }
 
@@ -49,6 +50,7 @@ public function rules(): array
             'total_sales' => 'إجمالي المبيعات',
             'rating'      => 'التقييم',
             'logo_store'  => 'لوغو',
+            'cover_store'  => 'غلاف',
         ];
     }
 }

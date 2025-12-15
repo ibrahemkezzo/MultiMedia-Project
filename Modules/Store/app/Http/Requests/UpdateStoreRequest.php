@@ -27,6 +27,8 @@ class UpdateStoreRequest extends FormRequest
             'total_sales' => ['nullable', 'decimal:0,2'],
             'rating'      => ['nullable', 'integer', 'min:0', 'max:5'],
             'status'      => ['nullable', 'in:pending,active,suspended,rejected'],
+            'logo_store'  => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg', 'max:2048'],
+            'cover_store'  => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp,svg', 'max:2048'],
         ];
     }
 
@@ -46,6 +48,8 @@ class UpdateStoreRequest extends FormRequest
             'total_sales' => 'إجمالي المبيعات',
             'rating'      => 'التقييم',
             'status'      => 'الحالة',
+            'logo_store'  => 'لوغو',
+            'cover_store'  => 'غلاف',
         ];
     }
 }

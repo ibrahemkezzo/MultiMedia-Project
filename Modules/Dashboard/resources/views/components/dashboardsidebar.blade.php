@@ -3,8 +3,7 @@
         <div class="logo-wrapper">
             <a href="{{ route('dashboard.index') }}">
                 <img class="d-none d-lg-block blur-up lazyloaded" style="height:60px; "
-                    {{-- src="{{ asset('storage/' . $cover->value) }}" alt=""> --}}
-                    src="#" alt="">
+                    src="{{ setting('logo')}}" alt="">
             </a>
         </div>
     </div>

@@ -22,7 +22,7 @@ trait HasMedia {
         $media = $this->media()->create([
             'collection_name' => $collection,
             'name' => $file->getClientOriginalName(),
-            'file_name' => basename($path),
+            'file_name' => $path,
             'mime_type' => $file->getMimeType(),
             'size' => $file->getSize(),
             'disk' => 'public',
@@ -34,6 +34,25 @@ trait HasMedia {
     public function clearMediaCollection(string $collection): void
     {
         $this->getMedia($collection)->each->delete();
+    }
+
+    public function findMedia(int $mediaId): ?Media
+    {
+        return $this->media()->find($mediaId);
+    }
+
+    /**
+     * حذف media واحد بالـ id
+     */
+    public function deleteMedia(int $mediaId): bool
+    {
+        $media = $this->findMedia($mediaId);
+
+        if ($media) {
+            return $media->delete(); // يحذف الملف + السجل
+        }
+
+        return false;
     }
 }
 

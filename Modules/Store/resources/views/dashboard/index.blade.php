@@ -132,6 +132,8 @@
                                 </tbody>
                             </table>
                         </div>
+
+                            <x-dashboard::partials.pagination-links :model="$stores"/>
                     </div>
                 </div>
             </div>

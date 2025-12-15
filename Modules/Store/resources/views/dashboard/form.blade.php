@@ -110,7 +110,7 @@
                                 type="email"
                                 value="{{ old('email', $store->email ?? '') }}"
                             />
-                            
+
                             <x-dashboard::form.input
                                 wrapperClass="col-md-6 col-x-6 mb-3"
                                 name="balance"
@@ -146,20 +146,28 @@
                                 value="{{ old('bio', $store->bio ?? '') }}"
                              />
 
-                            <div class="col-md-4 col-sm-12 mb-3">
-                                <div class="border rounded p-3 text-center shadow-sm h-100">
-                                    <h6 class="mb-3 text-muted">{{ __('Store Banner') }}</h6>
-                                    <img src="{{ setting_get('logo_store',null,$store->id) }}"
-                                        alt="Store Banner"
-                                        class="img-fluid rounded"
-                                        style="max-height: 150px; object-fit: cover; width: 100%;">
+                            @if ($mode === 'edit')
+                                <div class="col-md-4 col-sm-12 mb-3">
+                                    <div class="border rounded p-3 text-center shadow-sm h-100">
+                                        <h6 class="mb-3 text-muted">{{ __('Store Banner') }}</h6>
+                                        <img src="{{ setting_get('logo_store',null,$store->id) }}"
+                                            alt="Store Banner"
+                                            class="img-fluid rounded"
+                                            style="max-height: 150px; object-fit: cover; width: 100%;">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <x-dashboard::form.file-input
                                 wrapperClass="col-md-8 col-sm-12"
                                 name="logo_store"
                                 label="logo_store"
+                                accept="image/*"
+                            />
+                            <x-dashboard::form.file-input
+                                wrapperClass="col-md-8 col-sm-12"
+                                name="cover_store"
+                                label="cover_store"
                                 accept="image/*"
                             />
 

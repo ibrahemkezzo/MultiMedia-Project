@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Category\Models\Category;
 use Modules\Core\Models\BaseModel;
 use Modules\Core\Services\SettingService;
+use Modules\Product\Models\Product;
 
 // use Modules\Store\Database\Factories\StoreFactory;
 
@@ -43,6 +44,12 @@ class Store extends BaseModel
     public function settings()
     {
         return $this->hasMany(\Modules\Core\Models\Setting::class, 'store_id');
+    }
+
+    // === العلاقة الجديدة مع المنتجات ===
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'store_id');
     }
 
 // جلب الاسم من settings

@@ -38,6 +38,11 @@ class Category extends BaseModel
     {
         return $query->whereNull('parent_id');
     }
+    // Scopes
+    public function scopeChild($query)
+    {
+        return $query->where('parent_id','!=' , null );
+    }
 
     public function scopeActive($query)
     {

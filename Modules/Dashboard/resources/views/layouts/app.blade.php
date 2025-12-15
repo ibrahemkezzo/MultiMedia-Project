@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+        content="{{ setting('seo_description') }}">
     <meta name="keywords"
-        content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
+        content="{{ setting('seo_keywords') }}">
+    <meta name="title"
+        content="{{ setting('seo_title') }}">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('modules/dashboard/images/dashboard/favicon.png') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('modules/dashboard/images/dashboard/favicon.png') }}" type="image/x-icon">
-    <title>Multikart - Premium Admin Template</title>
+    <link rel="icon" href="{{setting('favicon') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ setting('favicon') }}" type="image/x-icon">
+    <title>{{ setting('site_name') }} - Premium Admin Panel</title>
 
     <!-- Google font-->
     <link rel="stylesheet"

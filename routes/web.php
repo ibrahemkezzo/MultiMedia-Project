@@ -5,12 +5,12 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 Route::prefix(LaravelLocalization::setLocale())
-    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])
+    ->middleware([ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])
     ->group(function () {
 
-        Route::get('/', function () {
+        Route::get('/2', function () {
             return view('welcome');
-        })->name('home');
+        })->name('home2');
 
         Route::middleware([
             'auth:sanctum',

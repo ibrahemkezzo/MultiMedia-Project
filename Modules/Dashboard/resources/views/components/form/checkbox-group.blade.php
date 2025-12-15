@@ -1,54 +1,72 @@
 @props([
-    'name'           => null,
-    'label'          => null,
-    'options'        => [],
-    'checked'        => [],
-    'inline'         => false,
-    'labelClass'     => 'form-label fw-semibold',
-    'wrapperClass'   => 'mb-3',
-    'itemClass'      => 'form-check',
-    'inputClass'     => 'form-check-input',
+    'name' => null,
+    'label' => null,
+    'options' => [],
+    'checked' => [],
+    'inline' => false,
+    'labelClass' => 'form-label fw-semibold',
+    'wrapperClass' => 'mb-3',
+    'itemClass' => 'form-check',
+    'inputClass' => 'form-check-input',
     'labelItemClass' => 'form-check-label',
-    'required'       => false,
-    'disabled'       => false,
-    'helpText'       => null,
-    'helpTextClass'  => 'text-muted small',
+    'required' => false,
+    'disabled' => false,
+    'helpText' => null,
+    'helpTextClass' => 'text-muted small',
 ])
 
 @php
-    $checkedValues = is_array(old($name)) ? old($name) : (old($name) ? [old($name)] : (array)$checked);
+    $checkedValues = is_array(old($name)) ? old($name) : (old($name) ? [old($name)] : (array) $checked);
     $itemClasses = $inline ? "$itemClass form-check-inline" : $itemClass;
 @endphp
 
 <div class="{{ $wrapperClass }}">
-    @if($label)
+    @if ($label)
         <div class="{{ $labelClass }}">
             {{ $label }}
-            @if($required)<span class="text-danger">*</span>@endif
+            @if ($required)
+                <span class="text-danger">*</span>
+            @endif
         </div>
     @endif
 
     <div class="options">
-        @foreach($options as $value => $text)
+        @if (count($options) > 1)
+            @foreach ($options as $value => $text)
+                <div class="{{ $itemClasses }}">
+                    <input type="checkbox" name="{{ $name }}[]" value="{{ $value }}"
+                        id="{{ $name }}_{{ $loop->iteration }}" {{ $attributes->except(['class']) }}
+                        class="{{ $inputClass }} {{ $errors->has($name) ? 'is-invalid' : '' }}"
+                        @checked(in_array($value, $checkedValues)) @if ($disabled) disabled @endif>
+                    <label class="{{ $labelItemClass }}" for="{{ $name }}_{{ $loop->iteration }}">
+                        {{ $text }}
+                    </label>
+                </div>
+            @endforeach
+        @else
+            @php
+                // جلب الـ option الوحيد
+                [$singleValue, $singleText] = [key($options), reset($options)];
+            @endphp
             <div class="{{ $itemClasses }}">
-                <input
-                    type="checkbox"
-                    name="{{ $name }}[]"
-                    value="{{ $value }}"
-                    id="{{ $name }}_{{ $loop->iteration }}"
-                    {{ $attributes->except(['class']) }}
-                    class="{{ $inputClass }} {{ $errors->has($name) ? 'is-invalid' : '' }}"
-                    @checked(in_array($value, $checkedValues))
-                    @if($disabled) disabled @endif
+                <input type="checkbox" name="{{ $name }}[]" 
+                value="{{ $singleValue }}"
+                id="{{ $name }}_1"
+                {{ $attributes->except(['class']) }}
+                class="{{ $inputClass }} {{ $errors->has($name) ? 'is-invalid' : '' }}"
+                @checked(in_array($singleValue, $checkedValues))
+                @if ($disabled)
+                    disabled
+                @endif
                 >
-                <label class="{{ $labelItemClass }}" for="{{ $name }}_{{ $loop->iteration }}">
-                    {{ $text }}
+                <label class="{{ $labelItemClass }}" for="{{ $name }}_1">
+                    {{ $singleText }}
                 </label>
             </div>
-        @endforeach
+        @endif
     </div>
 
-    @if($helpText)
+    @if ($helpText)
         <div class="{{ $helpTextClass }}">{{ $helpText }}</div>
     @endif
 
